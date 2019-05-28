@@ -1,4 +1,4 @@
-import requests
+import requests, os
 import re
 from bs4 import BeautifulSoup
 import time
@@ -6,8 +6,8 @@ import time
 
 
 LOGIN_URL = "https://app.keka.com/account/login?returnUrl=/"
-USER_EMAIL = ""
-USER_PWD = ""
+USER_EMAIL = os.getenv('EMAIL')
+USER_PWD = os.getenv('PASSWORD')
 
 def get_csrf_token(response):
     matches = re.findall(r'name="__RequestVerificationToken"|value="([^ >"]*)"', response)
